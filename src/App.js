@@ -30,9 +30,9 @@ function App() {
         </Container>
       </Navbar>
 
-      <div class="container-fluid bg-dark text-light p-5">
-        <div class="container bg-dark p-5">
-          <h1 class="display-4">Hello, world!</h1>
+      <div class="background">
+        <div class="container p-5">
+          <h1 class="display-4">40% Season Off!</h1>
           <p>Go to My Website</p>
           <button class="Primary">Learn more</button>
         </div>
