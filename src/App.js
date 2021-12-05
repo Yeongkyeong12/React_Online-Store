@@ -1,4 +1,4 @@
-import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
+import { Row, Col, Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
 import "./App.css";
 
 function App() {
@@ -38,7 +38,38 @@ function App() {
         </div>
       </div>
 
-      <div className="container">
+      <Container>
+        <Row>
+          <Col lg={true}>
+            <img
+              src="https://codingapple1.github.io/shop/shoes1.jpg"
+              width="100%"
+              alt="product img"
+            />
+            <h4>상품명</h4>
+            <p>상품설명 & 가격</p>
+          </Col>
+          <Col lg={true}>
+            <img
+              src="https://codingapple1.github.io/shop/shoes2.jpg"
+              width="100%"
+              alt="product img"
+            />
+            <h4>상품명</h4>
+            <p>상품설명 & 가격</p>
+          </Col>
+          <Col lg={true}>
+            <img
+              src="https://codingapple1.github.io/shop/shoes3.jpg"
+              width="100%"
+              alt="product img"
+            />
+            <h4>상품명</h4>
+            <p>상품설명 & 가격</p>
+          </Col>
+        </Row>
+      </Container>
+      {/* <div className="container">
         <div className="row">
           <div className="col-md-4">
             <img
@@ -70,7 +101,7 @@ function App() {
             <p>상품설명 & 가격</p>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
