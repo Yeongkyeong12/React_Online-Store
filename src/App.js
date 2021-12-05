@@ -37,6 +37,14 @@ function App() {
           <button class="Primary">Learn more</button>
         </div>
       </div>
+
+      <div className="container">
+        <div className="row">
+          <div className="col-md-4">product</div>
+          <div className="col-md-4">product</div>
+          <div className="col-md-4">product</div>
+        </div>
+      </div>
     </div>
   );
 }
