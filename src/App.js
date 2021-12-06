@@ -1,7 +1,10 @@
+import React, { useState } from "react";
 import { Row, Col, Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
 import "./App.css";
+import list from "./data";
 
 function App() {
+  let [shoes, shoes변경] = useState(list);
   return (
     <div className="App">
       <Navbar bg="light" expand="lg">
@@ -46,8 +49,10 @@ function App() {
               width="100%"
               alt="product img"
             />
-            <h4>상품명</h4>
-            <p>상품설명 & 가격</p>
+            <h4>{shoes[0].title}</h4>
+            <p>
+              {shoes[0].content}, {shoes[0].price}
+            </p>
           </Col>
           <Col lg={true}>
             <img
@@ -55,8 +60,10 @@ function App() {
               width="100%"
               alt="product img"
             />
-            <h4>상품명</h4>
-            <p>상품설명 & 가격</p>
+            <h4>{shoes[1].title}</h4>
+            <p>
+              {shoes[1].content}, {shoes[1].price}
+            </p>
           </Col>
           <Col lg={true}>
             <img
@@ -64,8 +71,10 @@ function App() {
               width="100%"
               alt="product img"
             />
-            <h4>상품명</h4>
-            <p>상품설명 & 가격</p>
+            <h4>{shoes[2].title}</h4>
+            <p>
+              {shoes[2].content}, {shoes[2].price}
+            </p>
           </Col>
         </Row>
       </Container>
