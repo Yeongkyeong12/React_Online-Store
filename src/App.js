@@ -38,28 +38,42 @@ function App() {
         </Container>
       </Navbar>
 
-      <div class="background">
-        <div class="container p-5">
-          <h1 class="display-4">40% Season Off!</h1>
-          <p>Go to My Website</p>
-          <button class="Primary">Learn more</button>
-        </div>
-      </div>
-
       <Route exact path="/">
-        <div>메인페이지</div>
+        <div class="background">
+          <div class="container p-5">
+            <h1 class="display-4">40% Season Off!</h1>
+            <p>Go to My Website</p>
+            <button class="Primary">Learn more</button>
+          </div>
+        </div>
+
+        <Container>
+          <Row>
+            {shoes.map((a, i) => {
+              return <Card shoes={shoes[i]} i={i} />;
+            })}
+          </Row>
+        </Container>
       </Route>
       <Route path="/detail">
-        <div>디테일페이지</div>
+        <div className="container">
+          <div className="row">
+            <div className="col-md-6">
+              <img
+                src="https://codingapple1.github.io/shop/shoes1.jpg"
+                width="100%"
+                alt="img"
+              />
+            </div>
+            <div className="col-md-6 mt-4">
+              <h4 className="pt-5">상품명</h4>
+              <p>상품설명</p>
+              <p>120000원</p>
+              <button className="btn btn-danger">주문하기</button>
+            </div>
+          </div>
+        </div>
       </Route>
-
-      <Container>
-        <Row>
-          {shoes.map((a, i) => {
-            return <Card shoes={shoes[i]} i={i} />;
-          })}
-        </Row>
-      </Container>
     </div>
   );
 }
