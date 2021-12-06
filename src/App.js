@@ -3,10 +3,12 @@ import { Row, Col, Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
 import "./App.css";
 import list from "./data";
 
-import { Link, Routes, Route, Switch } from "react-router-dom";
+import { Link, Route, Switch } from "react-router-dom";
 
 function App() {
   let [shoes, shoes변경] = useState(list);
+
+  console.log(shoes변경);
 
   return (
     <div className="App">
@@ -44,14 +46,13 @@ function App() {
         </div>
       </div>
 
-      <Routes>
-        <Route exact path="/">
-          <>메인페이지</>
-        </Route>
-        <Route path="/detail">
-          <>디테일페이지</>
-        </Route>
-      </Routes>
+      <Route exact path="/">
+        <div>메인페이지</div>
+      </Route>
+      <Route path="/detail">
+        <div>디테일페이지</div>
+      </Route>
+
       <Container>
         <Row>
           {shoes.map((a, i) => {
