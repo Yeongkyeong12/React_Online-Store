@@ -1,6 +1,14 @@
 import React, { useState } from "react";
+import { useHistory, useParams } from "react-router-dom";
 
-function Detail() {
+function Detail(props) {
+  let { id } = useParams();
+  let foundProduct = props.shoes.find(function (product) {
+    return product.id === id;
+  });
+
+  let history = useHistory();
+
   return (
     <div className="container">
       <div className="row">
@@ -12,9 +20,9 @@ function Detail() {
           />
         </div>
         <div className="col-md-6 mt-4">
-          <h4 className="pt-5">상품명</h4>
-          <p>상품설명</p>
-          <p>120000원</p>
+          <h4 className="pt-5">{foundProduct.title}</h4>
+          <p>{foundProduct.content}</p>
+          <p>{foundProduct.price}원</p>
           <button className="btn btn-danger">주문하기</button>
         </div>
       </div>

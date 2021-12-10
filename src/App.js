@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { Row, Col, Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
 import "./App.css";
-import list from "./data";
+import Data from "./data";
 import Detail from "./Detail";
 
 import { Link, Route, Switch } from "react-router-dom";
 
 function App() {
-  let [shoes, shoes변경] = useState(list);
+  let [shoes, shoes변경] = useState(Data);
 
   console.log(shoes변경);
 
@@ -43,26 +43,33 @@ function App() {
         </Container>
       </Navbar>
 
-      <Route exact path="/">
-        <div class="background">
-          <div class="container p-5">
-            <h1 class="display-4">40% Season Off!</h1>
-            <p>Go to My Website</p>
-            <button class="Primary">Learn more</button>
+      <Switch>
+        <Route exact path="/">
+          <div class="background">
+            <div class="container p-5">
+              <h1 class="display-4">40% Season Off!</h1>
+              <p>Go to My Website</p>
+              <button class="Primary">Learn more</button>
+            </div>
           </div>
-        </div>
 
-        <Container>
-          <Row>
-            {shoes.map((a, i) => {
-              return <Card shoes={shoes[i]} i={i} />;
-            })}
-          </Row>
-        </Container>
-      </Route>
-      <Route path="/detail">
-        <Detail />
-      </Route>
+          <Container>
+            <Row>
+              {shoes.map((a, i) => {
+                return <Card shoes={shoes[i]} i={i} />;
+              })}
+            </Row>
+          </Container>
+        </Route>
+
+        <Route path="/detail/:id">
+          <Detail shoes={shoes} />
+        </Route>
+
+        <Route path="/:id">
+          <div>blabla</div>
+        </Route>
+      </Switch>
     </div>
   );
 }

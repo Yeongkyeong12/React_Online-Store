@@ -1,4 +1,4 @@
-const list = [
+const Data = [
   {
     id: 0,
     title: "White and Black",
@@ -21,4 +21,4 @@ const list = [
   },
 ];
 
-export default list;
+export default Data;
