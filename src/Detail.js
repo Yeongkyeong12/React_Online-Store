@@ -1,16 +1,27 @@
-import React, { useState } from "react";
+import React from "react";
 import { useHistory, useParams } from "react-router-dom";
+import styled from "styled-components";
+import "./Detail.scss";
+
+let box = styled.div`
+  padding-top: 30px;
+`;
+
+let title = styled.h4`
+  font-size: 25px;
+  color: ${(props) => props.color};
+`;
 
 function Detail(props) {
   let { id } = useParams();
-  let foundProduct = props.shoes.find(function (product) {
-    return product.id === id;
-  });
-
   let history = useHistory();
+  let foundProduct = props.shoes.find((x) => x.id === id);
 
   return (
     <div className="container">
+      <box>
+        <title className="red">Detail</title>
+      </box>
       <div className="row">
         <div className="col-md-6">
           <img
