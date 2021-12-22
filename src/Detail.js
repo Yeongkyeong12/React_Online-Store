@@ -21,6 +21,9 @@ function Detail(props) {
     <div className="container">
       <box>
         <title className="red">Detail</title>
+        <div className="my-alert">
+          <p>재고가 얼마 남지 않았습니다</p>
+        </div>
       </box>
       <div className="row">
         <div className="col-md-6">
