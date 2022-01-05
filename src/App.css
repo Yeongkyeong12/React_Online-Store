@@ -2,14 +2,15 @@
   text-align: center;
 }
 
-.background {
-  background-image: url("./background.jpg");
-  background-size: cover;
-}
-
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+.background {
+  background-image: url("./background.jpg");
+  background-size: cover;
+  color: #fff;
 }
 
 @media (prefers-reduced-motion: no-preference) {

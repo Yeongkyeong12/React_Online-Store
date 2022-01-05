@@ -2,21 +2,21 @@ const Data = [
   {
     id: 0,
     title: "White and Black",
-    content: "Made in Germany",
+    content: "Born in Germany",
     price: 120000,
   },
 
   {
     id: 1,
     title: "Red Knit",
-    content: "Made in Korea",
+    content: "Born in Korea",
     price: 130000,
   },
 
   {
     id: 2,
     title: "Grey Sneakers",
-    content: "Made in France",
+    content: "Born in France",
     price: 150000,
   },
 ];
