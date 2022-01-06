@@ -22,7 +22,20 @@ function Cart(props) {
                 <td>{a.name}</td>
                 <td>{a.quan}</td>
                 <td>
-                  <button>+</button>
+                  <button
+                    onClick={() => {
+                      props.dispatch({ type: "increase" });
+                    }}
+                  >
+                    +
+                  </button>
+                  <button
+                    onClick={() => {
+                      props.dispatch({ type: "decrease" });
+                    }}
+                  >
+                    -
+                  </button>
                 </td>
               </tr>
             );

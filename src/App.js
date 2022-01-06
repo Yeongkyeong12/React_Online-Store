@@ -94,7 +94,7 @@ function App() {
         </Route>
 
         <Route path="/:id">
-          <div>아무거나 적었어용</div>
+          <div>blabla</div>
         </Route>
       </Switch>
     </div>
