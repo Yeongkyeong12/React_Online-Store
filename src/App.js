@@ -6,7 +6,6 @@ import Detail from "./Detail";
 import { Link, Route, Switch } from "react-router-dom";
 import axios from "axios";
 import Cart from "./Cart.js";
-
 export let 재고context = React.createContext();
 
 function App() {
