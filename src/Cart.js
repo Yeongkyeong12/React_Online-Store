@@ -1,8 +1,12 @@
 import React from "react";
 import { Table } from "react-bootstrap";
-import { connect } from "react-redux";
+import { connect, useDispatch, useSelector } from "react-redux";
 
 function Cart(props) {
+  let state = useSelector((state) => state);
+  console.log(state.reducer);
+  let dispatch = useDispatch();
+
   return (
     <div>
       <Table striped bordered hover>
@@ -15,7 +19,7 @@ function Cart(props) {
           </tr>
         </thead>
         <tbody>
-          {props.state.map((a, i) => {
+          {state.reducer.map((a, i) => {
             return (
               <tr key={i}>
                 <td>{a.id}</td>
@@ -24,7 +28,9 @@ function Cart(props) {
                 <td>
                   <button
                     onClick={() => {
-                      props.dispatch({ type: "increase" });
+                      props.dispatch({
+                        type: "increase",
+                      });
                     }}
                   >
                     +
@@ -42,16 +48,30 @@ function Cart(props) {
           })}
         </tbody>
       </Table>
+
+      {props.ifAlertOpen === true ? (
+        <div className="my-alert-yellow">
+          <p>신규고객 20% 할인 행사 중입니다!</p>
+          <button
+            onClick={() => {
+              props.dispatch({ type: "alert닫기" });
+            }}
+          >
+            닫기
+          </button>
+        </div>
+      ) : null}
     </div>
   );
 }
 
-function state를props화(state) {
-  return {
-    state: state,
-  };
-}
+// function state를props화(state) {
+//   return {
+//     state: state.reducer,
+//     ifAlertOpen: state.reducer2,
+//   };
+// }
 
-export default connect(state를props화)(Cart);
+// export default connect(state를props화)(Cart);
 
-//export default Cart;
+export default Cart;

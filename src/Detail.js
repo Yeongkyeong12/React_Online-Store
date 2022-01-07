@@ -10,6 +10,7 @@ import { 재고context } from "./App";
 import { Nav } from "react-bootstrap";
 
 import { CSSTransition } from "react-transition-group";
+import { connect } from "react-redux";
 
 let 박스 = styled.div`
   padding: 20px;
@@ -81,7 +82,18 @@ function Detail(props) {
           <p>{찾은상품.content}</p>
           <p>{찾은상품.price}</p>
 
-          <button className="btn btn-danger">주문하기</button>
+          <button
+            className="btn btn-danger"
+            onClick={() => {
+              props.dispatch({
+                type: "addList",
+                payload: { id: 2, name: "새로운상품", quan: 1 },
+              });
+              history.push("/cart");
+            }}
+          >
+            주문하기
+          </button>
           <button
             className="btn btn-danger"
             onClick={() => {
@@ -102,7 +114,7 @@ function Detail(props) {
               누른탭변경(0);
             }}
           >
-            Active
+            상품설명
           </Nav.Link>
         </Nav.Item>
         <Nav.Item>
@@ -113,7 +125,7 @@ function Detail(props) {
               누른탭변경(1);
             }}
           >
-            Option 2
+            배송정보
           </Nav.Link>
         </Nav.Item>
       </Nav>
@@ -138,4 +150,11 @@ function TabContent(props) {
   }
 }
 
-export default Detail;
+function state를props화(state) {
+  return {
+    state: state.reducer,
+    ifAlertOpen: state.reducer2,
+  };
+}
+
+export default connect(state를props화)(Detail);

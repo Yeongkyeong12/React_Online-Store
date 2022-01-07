@@ -3,7 +3,17 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
-import { createStore } from "redux";
+import { combineReducers, createStore } from "redux";
+
+// alert닫기 정도의 간단한 동작 구현은 useState쓰는 게 더 나음
+function reducer2(state = true, 액션) {
+  if (액션.type === "alert닫기") {
+    state = false;
+    return state;
+  } else {
+    return state;
+  }
+}
 
 let initialState = [
   { id: 0, name: "멋진신발", quan: 2 },
@@ -12,6 +22,11 @@ let initialState = [
 ];
 
 function reducer(state = initialState, action) {
+  if (action.type === "addList") {
+    let copy = [...state];
+    copy.push(action.payload);
+    return copy;
+  }
   if (action.type === "increase") {
     let copy = [...state];
     copy[0].quan++;
@@ -26,7 +41,7 @@ function reducer(state = initialState, action) {
   }
 }
 
-let store = createStore(reducer);
+let store = createStore(combineReducers({ reducer, reducer2 }));
 
 ReactDOM.render(
   <React.StrictMode>
