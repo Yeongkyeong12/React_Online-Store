@@ -25,9 +25,6 @@ function Detail(props) {
   let [alert, setAlert] = useState(true);
   let [inputData, setInputData] = useState("");
 
-  let [누른탭, 누른탭변경] = useState(0);
-  let [스위치, 스위치변경] = useState(false);
-
   let 재고 = useContext(재고context);
 
   useEffect(() => {
@@ -42,6 +39,9 @@ function Detail(props) {
   let { id } = useParams();
   let 찾은상품 = props.shoes.find((상품) => 상품.id == id);
   let history = useHistory();
+
+  let [누른탭, 누른탭변경] = useState(0);
+  let [스위치, 스위치변경] = useState(false);
 
   return (
     <div className="container">
@@ -86,8 +86,8 @@ function Detail(props) {
             className="btn btn-danger"
             onClick={() => {
               props.dispatch({
-                type: "addList",
-                payload: { id: 2, name: "새로운상품", quan: 1 },
+                type: "항목추가",
+                data: { id: 찾은상품.id, name: 찾은상품.title, quan: 1 },
               });
               history.push("/cart");
             }}

@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useEffect, memo } from "react";
 import { Table } from "react-bootstrap";
 import { connect, useDispatch, useSelector } from "react-redux";
 
 function Cart(props) {
+  function clickButton() {
+    props.dispatch({ type: "alert닫기" });
+  }
+
   let state = useSelector((state) => state);
   console.log(state.reducer);
   let dispatch = useDispatch();
@@ -19,7 +23,7 @@ function Cart(props) {
           </tr>
         </thead>
         <tbody>
-          {state.reducer.map((a, i) => {
+          {props.state.map((a, i) => {
             return (
               <tr key={i}>
                 <td>{a.id}</td>
@@ -29,7 +33,8 @@ function Cart(props) {
                   <button
                     onClick={() => {
                       props.dispatch({
-                        type: "increase",
+                        type: "수량증가",
+                        데이터: a.id,
                       });
                     }}
                   >
@@ -37,7 +42,7 @@ function Cart(props) {
                   </button>
                   <button
                     onClick={() => {
-                      props.dispatch({ type: "decrease" });
+                      props.dispatch({ type: "수량감소", 데이터: a.id });
                     }}
                   >
                     -
@@ -53,25 +58,40 @@ function Cart(props) {
         <div className="my-alert-yellow">
           <p>신규고객 20% 할인 행사 중입니다!</p>
           <button
+            className="close"
             onClick={() => {
-              props.dispatch({ type: "alert닫기" });
+              clickButton();
             }}
           >
             닫기
           </button>
         </div>
       ) : null}
+      <Parent 이름="Jane" 나이="20"></Parent>
     </div>
   );
 }
 
-// function state를props화(state) {
-//   return {
-//     state: state.reducer,
-//     ifAlertOpen: state.reducer2,
-//   };
-// }
+function Parent(props) {
+  return (
+    <div>
+      <Child1 이름={props.이름}></Child1>
+      <Child2 나이={props.나이}></Child2>
+    </div>
+  );
+}
 
-// export default connect(state를props화)(Cart);
+function Child1() {
+  useEffect(() => {
+    console.log("렌더링됨1");
+  });
+  return <div>1111</div>;
+}
+let Child2 = memo(function () {
+  useEffect(() => {
+    console.log("렌더링됨2");
+  });
+  return <div>2222</div>;
+});
 
 export default Cart;

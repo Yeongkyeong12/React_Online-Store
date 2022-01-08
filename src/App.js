@@ -1,11 +1,15 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, lazy, Suspense } from "react";
 import "./App.css";
 import { Navbar, Container, Nav, NavDropdown, Button } from "react-bootstrap";
 import Data from "./data";
-import Detail from "./Detail";
-import { Link, Route, Switch } from "react-router-dom";
+
+import { Link, Route, Switch, useHistory } from "react-router-dom";
 import axios from "axios";
 import Cart from "./Cart.js";
+//import Detail from "./Detail";
+
+let Detail = lazy(() => import("./Detail"));
+
 export let 재고context = React.createContext();
 
 function App() {
@@ -85,7 +89,9 @@ function App() {
 
         <Route path="/detail/:id">
           <재고context.Provider value={재고}>
-            <Detail shoes={shoes} 재고={재고} 재고변경={재고변경} />
+            <Suspense fallback={<div>로딩중..</div>}>
+              <Detail shoes={shoes} 재고={재고} 재고변경={재고변경} />
+            </Suspense>
           </재고context.Provider>
         </Route>
 
@@ -102,9 +108,16 @@ function App() {
 }
 
 function Card(props) {
-  // let 재고 = useContext(재고context);
+  let 재고 = useContext(재고context);
+  let history = useHistory();
+
   return (
-    <div className="col-md-4">
+    <div
+      className="col-md-4"
+      onClick={() => {
+        history.push("/detail/" + props.shoes.id);
+      }}
+    >
       <img
         src={
           "https://codingapple1.github.io/shop/shoes" + (props.i + 1) + ".jpg"
